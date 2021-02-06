@@ -17,7 +17,7 @@ const Weather = ({lat, lon}) => {
     // }, []) 
     return (
         <div>
-            Hi there
+            Hi there friend
         </div>
     )
 }
