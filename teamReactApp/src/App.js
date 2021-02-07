@@ -1,3 +1,4 @@
+import React from 'react'
 // adding css to jsx is that easy
 import './App.css'; // This pattern is preferred where css for this component has a matching .css filename
 
@@ -8,24 +9,66 @@ import Nasa from './components/Nasa'
 import Restaurants from './components/Restaurants'
 
 
-// Defining our <App /> component the function name matches the file name
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+
+
+const useStyles = makeStyles((theme) => ({
+    
+  heading: {
+    fontSize: theme.typography.pxToRem(10),
+    fontWeight: theme.typography.fontWeightBold,
+    color: "YELLOW",
+      },
+     }
+));
+
+
+
 function App() {
-  // All functional components need to return jsx with one parent element
-  const location = {
-    lat: 20,
-    lon: -86
-  };
+  const classes = useStyles();
 
-  return ( 
-    <div className="App"> {/* Parent Element. Also we can't use the word class, so we use className in jsx*/}
-      {/* Navbar is our imported component*/}
-      <Navbar />
-      <Weather lat={location.lat} lon={location.lon}/>
-      <Restaurants lat={location.lat} lon={location.lon}/>
-      <Nasa lat={location.lat} lon={location.lon}/>
-    </div>
-  );
-}
+  const [latitude, setLatitude] = React.useState();
+  const [longitude, setLongitude] = React.useState();
 
-// Makes our Component available for import
+ React.useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (location) => {
+        setLatitude(location.coords.latitude);
+        setLongitude(location.coords.longitude);
+      },
+      (fail) => console.log("Are you a bot?")
+    );
+  }, [latitude, longitude]);
+
+ 
+    return (
+      <div className="App" style={{ textAlign: "center" }}>
+        <h1>72 Hour Group #1 Project</h1>
+        <div>
+        <h1>NASA</h1>
+        <Nasa lat={latitude} long={longitude} />
+        </div>
+        
+        
+        <div>
+        <h1>Restaurants API from Zomato by Pauline</h1>
+                <Restaurants lat={latitude} long={longitude} />
+        </div>
+
+        <div>
+        <h1>Weather</h1>
+        <Weather lat={latitude} long={longitude} />
+        </div>
+      </div>
+    );
+  }
+
 export default App;
