@@ -1,0 +1,9 @@
+.link-color {
+    color: #255694;
+    text-decoration: none;
+  }
+  
+  .link-color:hover {
+    color: antiquewhite;
+    font-weight: green;
+  }
