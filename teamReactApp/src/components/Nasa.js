@@ -1,10 +1,12 @@
 import React from 'react';
 
-const Nasa = ({lat, lon}) => {
+const Nasa = ({lat, long}) => {
+  
+
     return(
         <div>
             <h1>Here's a picture from space!</h1>
-            <p>{lat}, {lon}</p>
+            <p>{lat} {long}</p>
         </div>
     )
 }
