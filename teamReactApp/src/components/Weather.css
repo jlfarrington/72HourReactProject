@@ -1,16 +1,7 @@
-.weatherbox {
-    width: 300px;
-    display: flex; 
-    flex-direction: column;
-    background-color: #6FD5D2;
-    color: #255694;
-    padding: 30px;
-    box-shadow: 2px 4px; 
-    margin: 50px auto 50px auto;
+h1 {
+    font-weight: 500;
 }
-
 
 .subtitle {
     font-style: italic;
-    font-size: 12px;
 }
