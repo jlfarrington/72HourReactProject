@@ -1,21 +1,32 @@
+import { useState, useEffect, useCallback } from "react";
+const Nasa = ({ lat, long }) => {
+  console.log(lat, long);
+  const [data, setData] = useState();
+  const urlCreator = window.URL || window.webkitURL;
+
 // import React from 'react';
+ const initImgSrc = async () => {
+    if (lat && long) {
+        const key = 'wYN5Dx5DUa7fm5NenrhhlcEeHGviL8bfDcB8drgs'
+        const url = `https://api.nasa.gov/planetary/earth/imagery?lon=${long}&lat=${lat}&date=2018-02-07&api_key=${key}`
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: new Headers({
+            'Content-Type': 'application/json',
+            })})
+        const blobData = await response.blob();
+      setData(blobData);
+    }
+  };
+  useEffect(() => {
+    initImgSrc();
+  }, [lat, long]);
+  return (
+    <div>
+      Hello
+      {data && <img src={urlCreator.createObjectURL(data)}/>}
+    </div>
+  );
+};
+export default Nasa;
 
-
-
-// const Nasa = ({ lat, long }) => {
-//   console.log(lat, long);
-
-//   const key = 'tbatxuwbbitdx9d24pHWVcijgTtUWP6EVXiQNVN4'
-//   const url = `https://api.nasa.gov/planetary/earth/imagery?lon=${long}&lat=${lat}&date=2018-02-07&dim=0.025&api_key=${key}`;
-
-
-  
-//   return (
-//     <div>
-//       <p>Here's a picture of where you are!</p>
-//       {url ? <img src={url} width="400px" height="400px" /> : <p>no image found</p>}
-//       </div>
-//   );
-// };
-
-// export default Nasa;
