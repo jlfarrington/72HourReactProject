@@ -20,13 +20,12 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 
 
-const useStyles = makeStyles((theme) => ({
-    
+const useStyles = makeStyles((theme) => ({  
   heading: {
     fontSize: theme.typography.pxToRem(10),
     fontWeight: theme.typography.fontWeightBold,
     color: "YELLOW",
-      },
+      }
      }
 ));
 
