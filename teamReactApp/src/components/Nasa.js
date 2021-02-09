@@ -23,8 +23,8 @@ const Nasa = ({ lat, long }) => {
   }, [lat, long]);
   return (
     <div>
-      Hello
-      {data && <img src={urlCreator.createObjectURL(data)}/>}
+      
+      {data && <img width="400px" height="400px" src={urlCreator.createObjectURL(data)}/>}
     </div>
   );
 };
