@@ -3,21 +3,12 @@ import React from 'react'
 import './App.css'; // This pattern is preferred where css for this component has a matching .css filename
 
 // A component import
-import Navbar from './components/Navbar'
 import Weather from './components/Weather'
 import Nasa from './components/Nasa'
 import Restaurants from './components/Restaurants'
 
 
 import { makeStyles } from "@material-ui/core/styles";
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-
 
 
 const useStyles = makeStyles((theme) => ({  
@@ -30,13 +21,11 @@ const useStyles = makeStyles((theme) => ({
 ));
 
 
-
 function App() {
   const classes = useStyles();
-
   const [latitude, setLatitude] = React.useState();
   const [longitude, setLongitude] = React.useState();
-
+ 
  React.useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (location) => {
@@ -47,7 +36,6 @@ function App() {
     );
   }, [latitude, longitude]);
 
- 
     return (
       <div className="App" style={{ textAlign: "center" }}>
         <h1>72 Hour Group #1 Project</h1>
@@ -63,8 +51,7 @@ function App() {
         </div>
 
         <div>
-        <h1>Weather</h1>
-        <Weather lat={latitude} long={longitude} />
+         <Weather lat={latitude} long={longitude} />
         </div>
       </div>
     );

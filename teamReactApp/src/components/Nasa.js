@@ -4,7 +4,8 @@ const Nasa = ({ lat, long }) => {
   const [data, setData] = useState();
   const urlCreator = window.URL || window.webkitURL;
 
-  const initImgSrc = async () => {
+// import React from 'react';
+ const initImgSrc = async () => {
     if (lat && long) {
         const key = 'wYN5Dx5DUa7fm5NenrhhlcEeHGviL8bfDcB8drgs'
         const url = `https://api.nasa.gov/planetary/earth/imagery?lon=${long}&lat=${lat}&date=2018-02-07&api_key=${key}`
@@ -28,5 +29,4 @@ const Nasa = ({ lat, long }) => {
   );
 };
 export default Nasa;
-
 
